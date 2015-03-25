@@ -4,7 +4,7 @@ namespace Dna\TestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class DNaTestBundle extends Bundle
+class DnaTestBundle extends Bundle
 {
 
 }
