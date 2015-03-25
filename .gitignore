@@ -11,3 +11,4 @@
 /web/bundles/
 .idea/workspace.xml
 .idea
+php_errors.log
