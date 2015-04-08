@@ -26,8 +26,11 @@ hello:
     defaults:   { _controller: AppBundle:Hello:index }
 
 blog:
-    path:       /blog/{page}
-    defaults:   { _controller: AppBundle:Blog:index, page: 1 }
+    path:           /blog/{page}
+    defaults:       { _controller: AppBundle:Blog:index, page: 1 }
+    requirements:
+        page:   \d+
+
 
 blog_show:
     path:       /blog/{slug}
