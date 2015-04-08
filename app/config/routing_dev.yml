@@ -24,3 +24,7 @@ _acme_demo:
 hello:
     path:       /hello/{name}
     defaults:   { _controller: AppBundle:Hello:index }
+
+blog_show:
+    path:       /blog/{slug}
+    defaults:   { _controller: AppBundle:Blog:show }
