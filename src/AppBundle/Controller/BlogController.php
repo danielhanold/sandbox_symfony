@@ -9,7 +9,9 @@ class BlogController extends Controller
 {
     public function indexAction($page)
     {
-        return new Response('<html><body>This is the index page for the blog. Imagine a list of blog posts.<br />The page is ' . $page . '</body></html>');
+        return $this->render('AppBundle:Blog:index.html.twig', array(
+            'page' => $page
+        ));
     }
 
     public function showAction($slug, $_route)
