@@ -1,0 +1,4 @@
+services:
+#    dna_test.example:
+#        class: Dna\TestBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
