@@ -23,6 +23,8 @@ class BlogController extends Controller
         ));
         var_dump('Generated URL: ' . $url);
 
+        dump($this->get('router'));
+
         // Create an example link to another blog post.
         $url_other_post = $this->get('router')->generate('blog_show', array(
             'slug' => 'another-blog-post'
