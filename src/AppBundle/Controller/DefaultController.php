@@ -54,4 +54,23 @@ class DefaultController extends Controller
 
         return new Response('Found a product for id ' . $id . '. The product is called: ' . $product->getName());
     }
+
+    /**
+     * Update a product.
+     */
+    public function updateAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('AppBundle:Product')->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException('No product found for id ' . $id);
+        }
+
+        // Update product with new name.
+        $product->setName('New product name!');
+        $em->flush();
+
+        return $this->redirectToRoute('homepage');
+    }
 }

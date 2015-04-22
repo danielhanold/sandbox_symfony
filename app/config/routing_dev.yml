@@ -43,3 +43,7 @@ product_create:
 product_show:
     path:       /product/show/{id}
     defaults:   { _controller: AppBundle:Default:show }
+
+product_update:
+    path:       /product/update/{id}
+    defaults:   { _controller: AppBundle:Default:update }
