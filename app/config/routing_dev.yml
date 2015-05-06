@@ -55,3 +55,7 @@ product_query_builder:
 product_query_builder_dql:
     path:       /product/query_builder_dql
     defaults:   { _controller: AppBundle:Default:queryBuilderDql }
+
+product_query_repository_class:
+    path:       /product/query_repository_class
+    defaults:   { _controller: AppBundle:Default:queryRepositoryClass }

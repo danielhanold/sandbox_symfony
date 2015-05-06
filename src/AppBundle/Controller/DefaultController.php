@@ -111,4 +111,16 @@ class DefaultController extends Controller
 
         return new Response('I made it until the end');
     }
+
+    /**
+     * Use repository class to return results.
+     */
+    public function queryRepositoryClassAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository('AppBundle:Product')->findAllOrderedByName();
+        d($products);
+
+        return new Response(sprintf('Success! I found %d results', count($products)));
+    }
 }

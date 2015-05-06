@@ -1,5 +1,6 @@
 AppBundle\Entity\Product:
     type: entity
+    repositoryClass: AppBundle\Entity\ProductRepository
     table: product
     id:
         id:
