@@ -94,4 +94,21 @@ class DefaultController extends Controller
 
         return new Response('I did something');
     }
+
+    /**
+     * Use the DQL instead of using the query builder.
+     */
+    public function queryBuilderDqlAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT p FROM AppBundle:Product p WHERE p.price > :price ORDER BY p.price ASC'
+        )->setParameter('price', '19.98');
+        $products = $query->getResult();
+
+        // Debug-print products:
+        d($products);
+
+        return new Response('I made it until the end');
+    }
 }
