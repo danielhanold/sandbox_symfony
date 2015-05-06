@@ -73,4 +73,25 @@ class DefaultController extends Controller
 
         return $this->redirectToRoute('homepage');
     }
+
+    /**
+     * Use the query builder to get results.
+     */
+    public function queryBuilderAction()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:Product');
+
+        $query = $repository->createQueryBuilder('p')
+            ->where('p.price > :price')
+            ->setParameter('price', '19.98')
+            ->orderBy('p.price', 'ASC')
+            ->getQuery();
+
+        $products = $query->getResult();
+        d($products);
+
+        return new Response('I did something');
+    }
 }

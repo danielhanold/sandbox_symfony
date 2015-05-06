@@ -47,3 +47,7 @@ product_show:
 product_update:
     path:       /product/update/{id}
     defaults:   { _controller: AppBundle:Default:update }
+
+product_query_builder:
+    path:       /product/query_builder
+    defaults:   { _controller: AppBundle:Default:queryBuilder }
