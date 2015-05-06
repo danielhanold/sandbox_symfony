@@ -12,4 +12,8 @@ AppBundle\Entity\Category:
         name:
             type: string
             length: 255
+    oneToMany:
+        products:
+            targetEntity: AppBundle\Entity\Product
+            mappedBy: category
     lifecycleCallbacks: {  }
