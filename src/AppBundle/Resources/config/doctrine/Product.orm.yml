@@ -15,3 +15,10 @@ AppBundle\Entity\Product:
             scale: 2
         description:
             type: text
+    manyToOne:
+        category:
+            targetEntity: AppBundle\Entity\Category
+            inversedBy: products
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
