@@ -18,4 +18,20 @@ class LuckyController
 
         return new Response('<html><body>Lucky Number: ' . $number . '</body></html>');
     }
+
+    /**
+     * Lucky number for API endpoints.
+     */
+    public function apiNumberAction()
+    {
+        $data = array(
+            'lucky_number' => rand(0, 100),
+        );
+
+        return new Response(
+            json_encode($data),
+            200,
+            array('Content-Type' => 'application/json')
+        );
+    }
 }
