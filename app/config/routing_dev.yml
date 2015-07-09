@@ -30,8 +30,8 @@ api_lucky_number:
     defaults:   { _controller: AppBundle:Lucky:apiNumber }
 
 hello:
-    path:       /hello/{name}
-    defaults:   { _controller: AppBundle:Hello:index }
+    path:       /hello/{firstName}/{lastName}
+    defaults:   { _controller: AppBundle:Hello:index, firstName: "No", lastName: "Name" }
 
 blog:
     path:           /blog/{page}
