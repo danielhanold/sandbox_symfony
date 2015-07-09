@@ -9,15 +9,22 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class LuckyController
 {
     /**
-     * Number action.
+     * Generate several numbers.
      *
+     * @param $count
      * @return Response
      */
-    public function numberAction() {
-        // Generate a random number between 0 and 100.
-        $number = rand(0, 100);
+    public function numberAction($count) {
+        $numbers = array();
 
-        return new Response('<html><body>Lucky Number: ' . $number . '</body></html>');
+        for ($i = 0; $i < $count; $i++) {
+            $numbers[] = rand(0, 100);
+        }
+
+        // Convert array into string.
+        $numbers_string = implode(', ', $numbers);
+
+        return new Response('<html><body>Lucky Number: ' . $numbers_string. '</body></html>');
     }
 
     /**

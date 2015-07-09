@@ -22,8 +22,8 @@ _acme_demo:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
 
 lucky_number:
-    path:       /lucky/number
-    defaults:   { _controller: AppBundle:Lucky:number }
+    path:       /lucky/number/{count}
+    defaults:   { _controller: AppBundle:Lucky:number, count: 1 }
 
 api_lucky_number:
     path:       /api/lucky/number
