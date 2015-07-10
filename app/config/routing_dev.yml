@@ -33,6 +33,10 @@ hello:
     path:       /hello/{firstName}/{lastName}
     defaults:   { _controller: AppBundle:Hello:index, firstName: "No", lastName: "Name" }
 
+hello_redirect:
+    path:       /hello_redirect
+    defaults:   { _controller: AppBundle:Hello:redirect }
+
 blog:
     path:           /blog/{page}
     defaults:       { _controller: AppBundle:Blog:index, page: 1 }
