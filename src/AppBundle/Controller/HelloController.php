@@ -12,7 +12,19 @@ class HelloController extends Controller
 {
     public function indexAction($firstName = 'No', $lastName = 'Name', Request $request)
     {
-        return new Response('<html><body>Hello ' . $firstName . ' ' . $lastName . '</body></html>');
+        $session = $request->getSession();
+
+        // Get the foo variable, use a default variable in case it doesn't exist.
+        // This will be empty on the first page load and set in a consecutive one.
+        $tempSessionVar = $session->get('foo', 'no name set yet');
+
+        // Story an attribute for reuse later.
+        $session->set('foo', 'danny test');
+
+        // Get an attribute set by another controller in another request.
+        $foobar = $session->get('foobar');
+
+        return new Response('<html><body>Hello ' . $firstName . ' ' . $lastName . '.<br />A temporary variable is: ' . $tempSessionVar . '</body></html>');
     }
 
     public function redirectAction()
