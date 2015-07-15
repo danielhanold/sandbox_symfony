@@ -51,6 +51,9 @@ blog:
     requirements:
         page:   \d+
 
+blog_recent:
+    path:       /blog/recent_posts
+    defaults:   { _controller: AppBundle:Blog:recentPosts }
 
 blog_show:
     path:       /blog/{slug}

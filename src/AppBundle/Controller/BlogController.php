@@ -39,4 +39,21 @@ class BlogController extends Controller
         var_dump('Full URL: ' . $current_url);
         return new Response('<html><body>This is a blog page. Hello ' . $slug . '.</body></html>');
     }
+
+    public function recentPostsAction()
+    {
+        // Fake-load a few articles from the database.
+        $recentArticles = array();
+        for ($i = 0; $i < 3; $i++) {
+            $recentArticles[] = array(
+                'title' => 'Post Number ' . $i,
+                'slug' => '/blog/article-' . $i,
+            );
+        }
+
+        // Show articles in a template.
+        return $this->render('AppBundle:Blog:recent_posts.html.twig', array(
+            'posts' => $recentArticles,
+        ));
+    }
 }

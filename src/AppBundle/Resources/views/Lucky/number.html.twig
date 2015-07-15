@@ -10,5 +10,5 @@
     {% endfor %}
 
     <h1>Lucky Numbers</h1>
-    <p>Your lucky numbers are: {{ luckyNumberList }}</p>
+    {{ include('AppBundle:Lucky/numbers:numbers_details.html.twig', {'luckyNumberList': luckyNumberList}) }}
 {% endblock %}
