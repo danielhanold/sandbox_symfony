@@ -13,6 +13,7 @@ class RandomController extends Controller
         return $this->render('AcmeDemoBundle:Random:index.html.twig', array(
             'limit' => $limit,
             'number' => $number,
+            'maliciousCode' => '<script>alert(\'You should not see me\')</script>',
         ));
 
         // Render a PHP template instead.
