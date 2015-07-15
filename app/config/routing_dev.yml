@@ -41,6 +41,10 @@ hello_redirect_external:
     path:       /hello_redirect_external
     defaults:   { _controller: AppBundle:Hello:redirectExternal }
 
+hello_error:
+    path:       /hello_error/{responseCode}
+    defaults:   { _controller: AppBundle:Hello:exampleError, responseCode: 500 }
+
 blog:
     path:           /blog/{page}
     defaults:       { _controller: AppBundle:Blog:index, page: 1 }

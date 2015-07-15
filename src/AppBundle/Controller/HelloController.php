@@ -25,4 +25,14 @@ class HelloController extends Controller
     {
         return $this->redirect('http://www.spiegel.de');
     }
+
+    public function exampleErrorAction($responseCode = 500)
+    {
+        switch ($responseCode) {
+            case 500:
+            default:
+                throw new \Exception('Something went wrong');
+            break;
+        }
+    }
 }
