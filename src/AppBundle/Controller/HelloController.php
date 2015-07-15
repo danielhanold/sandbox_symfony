@@ -18,4 +18,9 @@ class HelloController extends Controller
     {
         return $this->redirectToRoute('hello');
     }
+
+    public function redirectExternalAction()
+    {
+        return $this->redirect('http://www.spiegel.de');
+    }
 }

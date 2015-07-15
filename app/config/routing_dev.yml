@@ -37,6 +37,10 @@ hello_redirect:
     path:       /hello_redirect
     defaults:   { _controller: AppBundle:Hello:redirect }
 
+hello_redirect_external:
+    path:       /hello_redirect_external
+    defaults:   { _controller: AppBundle:Hello:redirectExternal }
+
 blog:
     path:           /blog/{page}
     defaults:       { _controller: AppBundle:Blog:index, page: 1 }
