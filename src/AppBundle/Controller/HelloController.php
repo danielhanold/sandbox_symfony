@@ -29,6 +29,10 @@ class HelloController extends Controller
     public function exampleErrorAction($responseCode = 500)
     {
         switch ($responseCode) {
+            case 404:
+                throw $this->createNotFoundException('This is a great example for a 404 error');
+                break;
+
             case 500:
             default:
                 throw new \Exception('Something went wrong');
