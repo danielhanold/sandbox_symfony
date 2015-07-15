@@ -36,10 +36,9 @@ class LuckyController extends Controller
         return new Response($html);
          */
 
-        return $this->render(
-            '@App/Lucky/number.html.twig',
-            array('luckyNumberList' => $numbers_string)
-        );
+        return $this->render("AppBundle:Lucky:number.html.twig", array(
+            'luckyNumberList' => $numbers_string
+        ));
     }
 
     /**
