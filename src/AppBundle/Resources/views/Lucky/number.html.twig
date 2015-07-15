@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     <h1>Lucky Numbers</h1>
     <p>Your lucky numbers are: {{ luckyNumberList }}</p>
 {% endblock %}

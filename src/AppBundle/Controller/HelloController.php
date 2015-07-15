@@ -30,6 +30,10 @@ class HelloController extends Controller
     public function redirectAction()
     {
         //return $this->redirectToRoute('hello');
+
+        // Add a flash message that will be displayed on the lucky number template.
+        $this->addFlash('notice', 'You were redirected to this page by the hello redirect page.');
+
         return new RedirectResponse($this->generateUrl('lucky_number') . '/6');
     }
 
