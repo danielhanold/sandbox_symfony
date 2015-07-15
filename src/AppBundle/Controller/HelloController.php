@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class HelloController extends Controller
 {
@@ -16,7 +17,8 @@ class HelloController extends Controller
 
     public function redirectAction()
     {
-        return $this->redirectToRoute('hello');
+        //return $this->redirectToRoute('hello');
+        return new RedirectResponse($this->generateUrl('lucky_number') . '/6');
     }
 
     public function redirectExternalAction()
