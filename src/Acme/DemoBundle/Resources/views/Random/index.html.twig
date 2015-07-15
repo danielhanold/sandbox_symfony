@@ -1,5 +1,11 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    {# Include parent stylesheets and add this one #}
+    {{ parent() }}
+    <link href="{{ asset('css/random.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
-    Random number between 1 and {{ limit }}: {{ number }}
+    <div class="random-numbers">Random number between 1 and {{ limit }}: {{ number }}</div>
 {% endblock %}
