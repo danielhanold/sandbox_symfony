@@ -47,7 +47,7 @@ class BlogController extends Controller
         for ($i = 0; $i < 3; $i++) {
             $recentArticles[] = array(
                 'title' => 'Post Number ' . $i,
-                'slug' => '/blog/article-' . $i,
+                'slug' => 'article-' . $i,
             );
         }
 
