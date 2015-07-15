@@ -11,4 +11,5 @@
 /web/bundles/
 .idea/workspace.xml
 .idea
+.DS_Store
 php_errors.log
