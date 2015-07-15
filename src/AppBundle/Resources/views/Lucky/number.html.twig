@@ -10,5 +10,13 @@
     {% endfor %}
 
     <h1>Lucky Numbers</h1>
+
+    {#
+        Add an image from the web location.
+        Images from bundles need to be moved to the web location by executing this command:
+        php app/console assets:install
+    #}
+    <img src="{{ asset('bundles/app/images/lucky.png') }}" alt="Lucky Charm"/>
+
     {{ include('AppBundle:Lucky/numbers:numbers_details.html.twig', {'luckyNumberList': luckyNumberList}) }}
 {% endblock %}
