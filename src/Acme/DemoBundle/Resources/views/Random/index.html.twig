@@ -9,4 +9,7 @@
 {% block body %}
     <div class="random-numbers">Random number between 1 and {{ limit }}: {{ number }}</div>
     <div>{{ maliciousCode }}</div>
+    {# Display actual code without escaping: #}
+    {# <div>{{ maliciousCode }}</div> #}
+    {{ dump(maliciousCode) }}
 {% endblock %}
