@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
@@ -32,6 +33,30 @@ class DefaultController extends Controller
         $em->flush();
 
         return new Response('Created product id ' . $product->getId());
+    }
+
+    /**
+     * Create a more advanced product with a category.
+     */
+    public function createProductAction()
+    {
+        $category = new Category();
+        $category->setName('Main Products');
+
+        $product = new Product();
+        $product->setName('Foo Product ' . time());
+        $product->setPrice(19.99);
+        $product->setDescription('Lorem ipsum');
+
+        // Relate this product to a category.
+        $product->setCategory($category);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($category);
+        $em->persist($product);
+        $em->flush();
+
+        return new Response('Created product id: ' . $product->getId() . ' and category id: ' . $category->getId());
     }
 
     /**
