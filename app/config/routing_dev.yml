@@ -67,9 +67,17 @@ product_create_with_category:
     path:       /product/create-with-category
     defaults:   { _controller: AppBundle:Default:createProduct }
 
+product_show_by_category:
+    path:       /products/by-category/{id}
+    defaults:   { _controller: AppBundle:Default:showProductsByCategoryId }
+
 product_show:
     path:       /product/show/{id}
     defaults:   { _controller: AppBundle:Default:show }
+
+product_show_with_category:
+    path:       /product/show-with-category/{id}
+    defaults:   { _controller: AppBundle:Default:showWithCategory }
 
 product_update:
     path:       /product/update/{id}

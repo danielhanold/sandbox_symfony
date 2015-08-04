@@ -60,6 +60,24 @@ class DefaultController extends Controller
     }
 
     /**
+     * Show all products from a specific category id.
+     */
+    public function showProductsByCategoryIdAction($id)
+    {
+        $category = $this->getDoctrine()
+            ->getRepository('AppBundle:Category')
+            ->find($id);
+
+        $products = $category->getProducts();
+
+        d($products);
+
+        return $this->render(':default:index.html.twig');
+
+        //return new Response('Found ' . count($products) . ' products with category id ' . $id);
+    }
+
+    /**
      * Load a product.
      */
     public function showAction($id)
@@ -78,6 +96,22 @@ class DefaultController extends Controller
         // d($product);
 
         return new Response('Found a product for id ' . $id . '. The product is called: ' . $product->getName());
+    }
+
+    /**
+     * Load a product with related category.
+     */
+    public function showWithCategoryAction($id)
+    {
+        $product = $this->getDoctrine()
+            ->getRepository('AppBundle:Product')
+            ->findOneByIdJoinedToCategory($id);
+
+        $category = $product->getCategory();
+        d($product);
+        d($category);
+
+        return $this->render('default/index.html.twig');
     }
 
     /**
