@@ -5,6 +5,7 @@
 {% endfor %}
 
 {# Optionally, turn off validation by setting the "novalidate" attribute #}
+{# Note: Clear your cache for effects to take place! (app/console ca:cl) #}
 {# {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }} #}
 {{ form_start(form) }}
 {{ form_widget(form) }}
