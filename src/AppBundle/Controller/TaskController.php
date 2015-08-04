@@ -20,13 +20,21 @@ class TaskController extends Controller
             ->add('task', 'text')
             ->add('dueDate', 'date')
             ->add('save', 'submit', array('label' => 'Create Task'))
+            ->add('saveAndAdd', 'submit', array('label' => 'Save and Add'))
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             // Perform some action, such as saving the task to the database.
-            return $this->redirectToRoute('task_success');
+            // Switch depending on which button was clicked.
+            $nextAction = $form->get('saveAndAdd')->isClicked() ? 'task_new' : 'task_success';
+
+            if ($nextAction == 'task_new') {
+                $this->addFlash('notice', 'Your task was successfully created. Add a new one');
+            }
+
+            return $this->redirectToRoute($nextAction);
         }
 
         return $this->render('@App/Task/new.html.twig', array(
