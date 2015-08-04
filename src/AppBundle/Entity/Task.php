@@ -7,6 +7,7 @@ class Task
 {
     protected $task;
     protected $dueDate;
+    protected $done;
 
     public function getTask()
     {
