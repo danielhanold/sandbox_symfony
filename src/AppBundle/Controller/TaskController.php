@@ -13,7 +13,6 @@ class TaskController extends Controller
     {
         // Create a task and give it some dummy data.
         $task = new Task();
-        $task->setTask('Write a blog post');
         $task->setDueDate(new \DateTime('tomorrow'));
 
         $form = $this->createFormBuilder($task)

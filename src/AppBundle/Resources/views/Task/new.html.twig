@@ -4,6 +4,8 @@
     </div>
 {% endfor %}
 
+{# Optionally, turn off validation by setting the "novalidate" attribute #}
+{# {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }} #}
 {{ form_start(form) }}
 {{ form_widget(form) }}
 {{ form_end(form) }}
