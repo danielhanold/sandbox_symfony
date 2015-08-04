@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Task;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class TaskController extends Controller
 {
@@ -21,8 +22,19 @@ class TaskController extends Controller
             ->add('save', 'submit', array('label' => 'Create Task'))
             ->getForm();
 
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // Perform some action, such as saving the task to the database.
+            return $this->redirectToRoute('task_success');
+        }
+
         return $this->render('@App/Task/new.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    public function successAction() {
+        return new Response('Your task was successfully created.');
     }
 }

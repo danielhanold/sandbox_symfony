@@ -59,9 +59,13 @@ blog_show:
     path:       /blog/{slug}
     defaults:   { _controller: AppBundle:Blog:show }
 
-product_new:
-    path:       /product/new
+task_new:
+    path:       /task/new
     defaults:   { _controller: AppBundle:Task:new }
+
+task_success:
+    path:       /task/success
+    defaults:   { _controller: AppBundle:Task:success }
 
 product_create:
     path:       /product/create
