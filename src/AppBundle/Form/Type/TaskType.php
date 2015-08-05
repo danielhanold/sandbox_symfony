@@ -13,6 +13,12 @@ class TaskType extends AbstractType
         $builder
             ->add('task')
             ->add('dueDate', null, array('widget' => 'single_text'))
+            ->add('termsAgreed', 'checkbox', array(
+                // Field is not mapped in the Task object. To prevent this
+                // from causing an error, mark it's mapped character as "false".
+                'mapped' => false,
+                'label' => 'Agree to terms'
+            ))
             ->add('save', 'submit');
     }
 
