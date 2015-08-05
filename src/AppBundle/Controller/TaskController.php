@@ -46,7 +46,9 @@ class TaskController extends Controller
     }
 
     public function successAction() {
-        return new Response('Your task was successfully created.');
+        return $this->render(':default:index.html.twig', array(
+            'body' => 'Thank you for creating your task.'
+        ));
     }
 
     public function newBasedOffTypeAction(Request $request)
@@ -58,15 +60,8 @@ class TaskController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            // Perform some action, such as saving the task to the database.
-            // Switch depending on which button was clicked.
-            $nextAction = $form->get('saveAndAdd')->isClicked() ? 'task_new' : 'task_success';
-
-            if ($nextAction == 'task_new') {
-                $this->addFlash('notice', 'Your task was successfully created. Add a new one');
-            }
-
-            return $this->redirectToRoute($nextAction);
+            $this->addFlash('notice', 'Created task with the title: ' . $form->get('task')->getData());
+            return $this->redirectToRoute('task_success');
         }
 
         return $this->render('@App/Task/new.html.twig', array(
