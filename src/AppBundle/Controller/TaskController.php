@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Task;
+use AppBundle\Form\Type\TaskType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,5 +47,30 @@ class TaskController extends Controller
 
     public function successAction() {
         return new Response('Your task was successfully created.');
+    }
+
+    public function newBasedOffTypeAction(Request $request)
+    {
+        $task = new Task();
+        $task->setDueDate(new \DateTime('today'));
+
+        $form = $this->createForm(new TaskType(), $task);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // Perform some action, such as saving the task to the database.
+            // Switch depending on which button was clicked.
+            $nextAction = $form->get('saveAndAdd')->isClicked() ? 'task_new' : 'task_success';
+
+            if ($nextAction == 'task_new') {
+                $this->addFlash('notice', 'Your task was successfully created. Add a new one');
+            }
+
+            return $this->redirectToRoute($nextAction);
+        }
+
+        return $this->render('@App/Task/new.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }

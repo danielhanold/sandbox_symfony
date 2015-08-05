@@ -63,6 +63,10 @@ task_new:
     path:       /task/new
     defaults:   { _controller: AppBundle:Task:new }
 
+task_new_type:
+    path:       /task/newBasedOffType
+    defaults:   { _controller: AppBundle:Task:newBasedOffType }
+
 task_success:
     path:       /task/success
     defaults:   { _controller: AppBundle:Task:success }
