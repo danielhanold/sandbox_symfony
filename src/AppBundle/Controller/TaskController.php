@@ -61,6 +61,11 @@ class TaskController extends Controller
 
         if ($form->isValid()) {
             $this->addFlash('notice', 'Created task with the title: ' . $form->get('task')->getData());
+            // Persist object in the database.
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+
             return $this->redirectToRoute('task_success');
         }
 

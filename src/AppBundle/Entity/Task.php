@@ -7,7 +7,22 @@ class Task
 {
     protected $task;
     protected $dueDate;
-    protected $done;
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getTask()
     {
@@ -23,7 +38,6 @@ class Task
     {
         return $this->dueDate;
     }
-
     public function setDueDate(\DateTime $dueDate = null)
     {
         $this->dueDate = $dueDate;

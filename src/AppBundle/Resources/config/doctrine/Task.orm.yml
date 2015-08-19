@@ -1,0 +1,16 @@
+AppBundle\Entity\Task:
+    type: entity
+    table: task
+    repositoryClass: AppBundle\Entity\TaskRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: auto
+    fields:
+        task:
+            type: string
+            length: 255
+        dueDate:
+            type: date
