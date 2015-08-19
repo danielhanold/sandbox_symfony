@@ -51,6 +51,9 @@ blog:
     requirements:
         page:   \d+
 
+logout:
+    path:       /logout
+
 admin:
     path:       /admin
     defaults:   { _controller: AppBundle:Default:admin }
