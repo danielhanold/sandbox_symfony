@@ -19,6 +19,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * Create a dummy admin page.
+     */
+    public function adminAction()
+    {
+        return $this->render(':default:index.html.twig', array(
+            'body' => 'Admin Page!'
+        ));
+    }
+
+    /**
      * Create a product.
      */
     public function createAction()
