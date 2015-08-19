@@ -12,6 +12,11 @@ class TaskController extends Controller
 {
     public function newAction(Request $request)
     {
+        // Requires user to be logged in.
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException('You need to be logged in');
+        }
+
         // Create a task and give it some dummy data.
         $task = new Task();
         $task->setDueDate(new \DateTime('tomorrow'));
@@ -53,6 +58,9 @@ class TaskController extends Controller
 
     public function newBasedOffTypeAction(Request $request)
     {
+        // Require admin access to access this page.
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Admin access required.');
+
         $task = new Task();
         $task->setDueDate(new \DateTime('today'));
 
