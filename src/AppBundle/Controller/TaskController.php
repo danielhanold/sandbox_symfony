@@ -17,6 +17,9 @@ class TaskController extends Controller
             throw $this->createAccessDeniedException('You need to be logged in');
         }
 
+        $user = $this->getUser();
+        d($user);
+
         // Create a task and give it some dummy data.
         $task = new Task();
         $task->setDueDate(new \DateTime('tomorrow'));
