@@ -6,8 +6,31 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Config\Definition\Processor;
+use Acme\DatabaseConfiguration;
+use Symfony\Component\Config\FileLocator;
+
 class LuckyController extends Controller
 {
+    /**
+     * Configuration sandbox.
+     */
+    public function configAction() {
+        // Get the root directory of the application.
+        $rootDir = $this->container->getParameter('kernel.root_dir');
+
+        // Get the directory that holds configurations.
+        $configDirectories = array($rootDir . '/config');
+
+        // Locate yaml configuration file.
+        $locator = new FileLocator($configDirectories);
+        $yamlConfigfiles = $locator->locate('config.yml', null, false);
+        d($yamlConfigfiles);
+
+        return new Response('Just a debug page');
+    }
+
     /**
      * Generate several numbers.
      *
@@ -16,6 +39,7 @@ class LuckyController extends Controller
      */
     public function numberAction($count)
     {
+
         $numbers = array();
 
         for ($i = 0; $i < $count; $i++) {
